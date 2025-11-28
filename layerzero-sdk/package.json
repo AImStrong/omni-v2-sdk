@@ -1,0 +1,30 @@
+{
+  "name": "layerzero-tx-sdk",
+  "version": "1.0.0",
+  "description": "LayerZero Scan TX Status SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "layerzero",
+    "lz",
+    "sdk",
+    "transaction",
+    "cross-chain"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^20.0.0"
+  },
+  "bin": {
+  "status": "./bin/status.js"
+}
+
+}
