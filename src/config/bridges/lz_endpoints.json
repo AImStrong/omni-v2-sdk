@@ -1,0 +1,30 @@
+{
+  "sepolia": {
+    "endpoint": "0x6EDCE65403992e310A62460808c4b910D972f10f",
+    "eid": 40161
+  },
+  "bscTestnet": {
+    "endpoint": "0x6EDCE65403992e310A62460808c4b910D972f10f",
+    "eid": 40102
+  },
+  "base": {
+    "endpoint": "0x1a44076050125825900e736c501f859c50fE728c",
+    "eid": 30184
+  },
+  "arbitrum": {
+    "endpoint": "0x1a44076050125825900e736c501f859c50fE728c",
+    "eid": 30110
+  },
+  "bsc": {
+    "endpoint": "0x1a44076050125825900e736c501f859c50fE728c",
+    "eid": 30102
+  },
+  "solanaDevnet": {
+    "endpoint": "76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6",
+    "eid": 40168
+  },
+  "solana": {
+    "endpoint": "76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6",
+    "eid": 30168
+  }
+}

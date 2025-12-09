@@ -1,0 +1,16 @@
+{
+  "sepolia": {
+    "AddressesProvider": "0x49a4c5883c3753af9dc36a1c9e5c9f50b7190733",
+    "Client": "0x855cf5d56721a7f9C137a8f8c08f9F44cb0EF668",
+    "ClientVault": "0x840F7C7044513B1899a2a70781f4C9c967753959",
+    "Message": "0x598f33F464Efd78ff5f5c9EDC9062199b4EE6622",
+    "GasFund": "0x55B4Ea5E4E559CEb6c599e4d3Ce2943dacBdE527"
+  },
+  "bscTestnet": {
+    "AddressesProvider": "0xca9d71ce0395ecbb7792589e67f3a865de516aee",
+    "Client": "0xaaEb22925382c1667d11CB388E3469364aF98AaB",
+    "ClientVault": "0x3569Dcdf30048151255c0728cB69Eb36f5393DA0",
+    "Message": "0x6c0d2214826c8baB7aa733B0407Fc71091c1CFe0",
+    "GasFund": "0x2dc1c52EFF173011E70C93a72F02b285e18985D3"
+  }
+}
