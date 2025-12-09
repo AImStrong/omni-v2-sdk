@@ -1,0 +1,42 @@
+{
+  "arbitrum": {},
+  "base": {},
+  "bsc": {},
+  "solana": {},
+  "bscTestnet": {
+    "WBTC": {
+      "address": "0x11b5498e6a85ab62925a7e66fea707d096ee23f1",
+      "omniAsset": "0xE6DD193713061EB1d87206f6b4F104b798479E12",
+      "aToken": "0x90A90A49333fa4bf8a757cdA90319491928Fcb33",
+      "variableDebtToken": "0x4788B925471564ffac2E4867DE4Aab5E8A6d4baE"
+    },
+    "SOL": {
+      "address": "0xb28ee1f4ae2c8082a6c06c446c79ad8173d988e4",
+      "omniAsset": "0x4E5dd5E9eBd341D181171a90543635B20361e034",
+      "aToken": "0xe9347Cf9414B40B19Acf4cA1D6dC77A9079D9c1b",
+      "variableDebtToken": "0x36c0b817C9202bc9c6D669d4c2232321DF3b373d"
+    }
+  },
+  "sepolia": {
+    "USDC": {
+      "address": "0xb293ebf681941cc4c83fd72b5eae39cc724bfdc7",
+      "omniAsset": "0x85A821c8205e1cC8591ff9Fbc8eFf63489512698",
+      "aToken": "0x45FCB562cfD6F5F0a14A2CE70c92914d96c5Ca04",
+      "variableDebtToken": "0x3b004eb03bb631677Ad79d9Cc669fAedE000A3d5"
+    },
+    "WETH": {
+      "address": "0xf6bc69be9162fce10412175d96fea4c673bc3c74",
+      "omniAsset": "0x55bF20ee74498C80048d804dF62a1d77E9A6c288",
+      "aToken": "0xEAC5994A8AEFD8Cb98B08A97536A36fe03B7a3ED",
+      "variableDebtToken": "0x652CcdF905525604759fE864C6dA2EEf931Edc0a"
+    }
+  },
+  "solanaDevnet": {
+    "USDT": {
+      "address": "3QVttuQ9p1ZLVTYw2UVkWdnHKbo7y8CKdnqd3SXwUjtS",
+      "omniAsset": "0x7a4C1ffc6f98D1996488d9Ca1c47B407B7fbcE99",
+      "aToken": "0x167c65E630725aBC7D1dc3E80f50b808E60a8b1C",
+      "variableDebtToken": "0x85e43f7BaA85e7c98da104250ce58ecB9d916319"
+    }
+  }
+}
