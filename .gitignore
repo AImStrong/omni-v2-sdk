@@ -20,4 +20,4 @@
 /coverage
 
 # Dotenv
-.env*
+.env
