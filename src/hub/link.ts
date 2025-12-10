@@ -2,7 +2,7 @@ import { convertToBytes32, vecToBytes } from '../utils/index';
 import { PublicKey } from "@solana/web3.js";
 import { EVM } from '../config/chain';
 import { pdas } from '../config/solana/program';
-import { program } from '../contract-program-getter/index';
+import { solanaProgram } from '../contract-program-getter/index';
 import { hub } from '../contract-program-getter/index';
 
 export async function isRequestLinking(
@@ -18,7 +18,7 @@ export async function isRequestLinking(
   }
   else if (chain1 == "solana" || chain1 == "solanaDevnet") {
     try {
-      const link = await program(chain1).account.link.fetch(pdas.link(chain1, new PublicKey(acc1)));
+      const link = await solanaProgram(chain1).account.link.fetch(pdas.link(chain1, new PublicKey(acc1)));
       if (vecToBytes(link.account) != convertToBytes32(acc2)) return false;
     } catch {
       return false;
@@ -32,7 +32,7 @@ export async function isRequestLinking(
   }
   else if (chain2 == "solana" || chain2 == "solanaDevnet") {
     try {
-      const link = await program(chain2).account.link.fetch(pdas.link("solanaDevnet", new PublicKey(acc2)));
+      const link = await solanaProgram(chain2).account.link.fetch(pdas.link("solanaDevnet", new PublicKey(acc2)));
       if (vecToBytes(link.account) != convertToBytes32(acc1)) return false;
     } catch {
       return false;
@@ -53,7 +53,7 @@ export async function isRequestUnlinking(
   }
   else if (chain == "solana" || chain == "solanaDevnet") {
     try {
-      const link = await program(chain).account.link.fetch(pdas.link(chain, new PublicKey(acc)));
+      const link = await solanaProgram(chain).account.link.fetch(pdas.link(chain, new PublicKey(acc)));
       if (vecToBytes(link.account) != convertToBytes32(acc)) return false;
     } catch {
       return false;
