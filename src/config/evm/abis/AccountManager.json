@@ -132,6 +132,25 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_salt",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSaltGroup",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "implementation",
       "outputs": [
@@ -256,5 +275,5 @@
   "deployedLinkReferences": {},
   "immutableReferences": {},
   "inputSourceName": "project/contracts/src/protocol/hub/account/AccountManager.sol",
-  "buildInfoId": "solc-0_8_28-23323d12edc79cabba6ad49c2e848c9d5d59eb16"
+  "buildInfoId": "solc-0_8_28-aab213cb21b345ed4c7a92152e9ffc7253224576"
 }
