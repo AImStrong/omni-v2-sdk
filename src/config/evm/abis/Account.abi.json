@@ -1,0 +1,112 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "provider",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "target_",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "data_",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "returnData_",
+        "type": "bytes"
+      }
+    ],
+    "name": "CallExecuted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "target_",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "data_",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "returnData_",
+        "type": "bytes"
+      }
+    ],
+    "name": "DelegateCallExecuted",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADDRESSES_PROVIDER",
+    "outputs": [
+      {
+        "internalType": "contract IAddressesProvider",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "target_",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data_",
+        "type": "bytes"
+      }
+    ],
+    "name": "executeCall",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "target_",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data_",
+        "type": "bytes"
+      }
+    ],
+    "name": "executeDelegateCall",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

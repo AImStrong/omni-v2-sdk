@@ -1,0 +1,1 @@
+export type Asset = "ETH"|"SOL"|"BTC"|"WETH"|"WBTC"|"WSOL"|"USDC"|"USDT"|"DAI";

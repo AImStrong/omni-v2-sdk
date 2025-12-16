@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/solana_client.json`.
  */
 export type SolanaClient = {
-  "address": "7vf6XHz6uepANiLrRNrzHdh9Cpf2ATMG4NHZryzCsDwJ",
+  "address": "8oEZisP7U671sivnGDKcPPxR43xVn4CNhtQxDfiueUaT",
   "metadata": {
     "name": "solanaClient",
     "version": "0.1.0",
@@ -13,6 +13,81 @@ export type SolanaClient = {
     "description": "Created with Anchor"
   },
   "instructions": [
+    {
+      "name": "approve",
+      "discriminator": [
+        69,
+        74,
+        217,
+        36,
+        115,
+        117,
+        97,
+        76
+      ],
+      "accounts": [
+        {
+          "name": "clientInfo"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
+          "writable": true
+        },
+        {
+          "name": "tokenMint",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "ownerAta",
+          "writable": true
+        },
+        {
+          "name": "clientAta",
+          "writable": true
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "tokenProgram"
+        },
+        {
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "spender",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u128"
+        },
+        {
+          "name": "options",
+          "type": "bytes"
+        },
+        {
+          "name": "gasFee",
+          "type": "u64"
+        }
+      ]
+    },
     {
       "name": "borrowToken",
       "discriminator": [
@@ -27,10 +102,14 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "clientVault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
           "writable": true
         },
         {
@@ -38,31 +117,23 @@ export type SolanaClient = {
           "writable": true
         },
         {
-          "name": "borrowerAta",
-          "writable": true
-        },
-        {
-          "name": "clientVaultAta",
-          "writable": true
-        },
-        {
-          "name": "borrower",
+          "name": "receiver",
           "writable": true,
           "signer": true
         },
         {
-          "name": "tokenProgram"
-        },
-        {
-          "name": "message",
+          "name": "receiverAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -70,7 +141,7 @@ export type SolanaClient = {
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "borrower",
           "type": {
             "array": [
               "u8",
@@ -83,8 +154,8 @@ export type SolanaClient = {
           "type": "u128"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -106,38 +177,11 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "clientInfo",
           "writable": true
         },
         {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        },
-        {
-          "name": "systemProgram"
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "initClientVault",
-      "discriminator": [
-        169,
-        227,
-        219,
-        101,
-        143,
-        130,
-        82,
-        14
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "clientVault",
+          "name": "client",
           "writable": true
         },
         {
@@ -165,10 +209,10 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "message",
+          "name": "messageInfo",
           "writable": true
         },
         {
@@ -180,7 +224,12 @@ export type SolanaClient = {
           "name": "systemProgram"
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "defaultChainId",
+          "type": "u32"
+        }
+      ]
     },
     {
       "name": "initStore",
@@ -196,7 +245,7 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
           "name": "payer",
@@ -227,26 +276,51 @@ export type SolanaClient = {
       ]
     },
     {
-      "name": "linkAccount",
+      "name": "interestBearingTokenTransfer",
       "discriminator": [
-        68,
-        68,
+        133,
+        124,
         218,
-        40,
-        15,
-        50,
-        106,
-        97
+        3,
+        176,
+        218,
+        144,
+        208
       ],
       "accounts": [
         {
-          "name": "link",
+          "name": "clientInfo"
+        },
+        {
+          "name": "client",
           "writable": true
         },
         {
-          "name": "signer",
+          "name": "messageInfo",
+          "writable": true
+        },
+        {
+          "name": "tokenMint",
+          "writable": true
+        },
+        {
+          "name": "owner",
           "writable": true,
           "signer": true
+        },
+        {
+          "name": "ownerAta",
+          "writable": true
+        },
+        {
+          "name": "clientAta",
+          "writable": true
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -254,13 +328,25 @@ export type SolanaClient = {
       ],
       "args": [
         {
-          "name": "account",
+          "name": "spender",
           "type": {
             "array": [
               "u8",
               32
             ]
           }
+        },
+        {
+          "name": "amount",
+          "type": "u128"
+        },
+        {
+          "name": "options",
+          "type": "bytes"
+        },
+        {
+          "name": "gasFee",
+          "type": "u64"
         }
       ]
     },
@@ -278,18 +364,14 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "clientVault",
+          "name": "client",
           "writable": true
         },
         {
-          "name": "payerAta",
-          "writable": true
-        },
-        {
-          "name": "clientVaultAta",
+          "name": "messageInfo",
           "writable": true
         },
         {
@@ -302,21 +384,21 @@ export type SolanaClient = {
           "signer": true
         },
         {
-          "name": "message",
+          "name": "liquidatorAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
         },
         {
-          "name": "systemProgram"
+          "name": "tokenProgram"
         },
         {
-          "name": "tokenProgram"
+          "name": "systemProgram"
         }
       ],
       "args": [
@@ -347,8 +429,8 @@ export type SolanaClient = {
           "type": "u128"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -379,11 +461,15 @@ export type SolanaClient = {
           "writable": true
         },
         {
-          "name": "message",
+          "name": "clientInfo",
           "writable": true
         },
         {
-          "name": "clientVault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
           "writable": true
         },
         {
@@ -393,7 +479,7 @@ export type SolanaClient = {
           "name": "tokenMint"
         },
         {
-          "name": "clientVaultAta"
+          "name": "clientAta"
         },
         {
           "name": "userAta"
@@ -463,6 +549,9 @@ export type SolanaClient = {
       "accounts": [
         {
           "name": "store"
+        },
+        {
+          "name": "messageInfo"
         }
       ],
       "args": [
@@ -471,8 +560,8 @@ export type SolanaClient = {
           "type": "bytes"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         }
       ],
       "returns": {
@@ -480,6 +569,43 @@ export type SolanaClient = {
           "name": "messagingFee"
         }
       }
+    },
+    {
+      "name": "receiveFee",
+      "discriminator": [
+        64,
+        133,
+        34,
+        163,
+        44,
+        108,
+        30,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "clientInfo",
+          "writable": true
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "value",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "repayToken",
@@ -495,22 +621,18 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "clientVault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
           "writable": true
         },
         {
           "name": "tokenMint",
-          "writable": true
-        },
-        {
-          "name": "payerAta",
-          "writable": true
-        },
-        {
-          "name": "clientVaultAta",
           "writable": true
         },
         {
@@ -519,18 +641,18 @@ export type SolanaClient = {
           "signer": true
         },
         {
-          "name": "tokenProgram"
-        },
-        {
-          "name": "message",
+          "name": "payerAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -538,7 +660,7 @@ export type SolanaClient = {
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "repayer",
           "type": {
             "array": [
               "u8",
@@ -551,105 +673,8 @@ export type SolanaClient = {
           "type": "u128"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
-        },
-        {
-          "name": "gasFee",
-          "type": "u64"
-        }
-      ]
-    },
-    {
-      "name": "resetInboundNonce",
-      "discriminator": [
-        173,
-        47,
-        38,
-        54,
-        202,
-        228,
-        201,
-        172
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "message",
-          "writable": true
-        },
-        {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "resetOutboundNonce",
-      "discriminator": [
-        24,
-        131,
-        254,
-        152,
-        197,
-        18,
-        121,
-        193
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "message",
-          "writable": true
-        },
-        {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "send",
-      "discriminator": [
-        102,
-        251,
-        20,
-        187,
-        65,
-        75,
-        12,
-        69
-      ],
-      "accounts": [
-        {
-          "name": "store",
-          "docs": [
-            "OApp Store PDA that signs the send instruction"
-          ]
-        },
-        {
-          "name": "message"
-        },
-        {
-          "name": "lastMessage"
-        }
-      ],
-      "args": [
-        {
-          "name": "sender",
-          "type": "pubkey"
-        },
-        {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -671,7 +696,15 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
+          "writable": true
         },
         {
           "name": "tokenMint",
@@ -683,15 +716,18 @@ export type SolanaClient = {
           "signer": true
         },
         {
-          "name": "message",
+          "name": "userAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -703,8 +739,8 @@ export type SolanaClient = {
           "type": "bool"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -726,7 +762,7 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "clientInfo",
           "writable": true
         },
         {
@@ -756,7 +792,7 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "clientInfo",
           "writable": true
         },
         {
@@ -769,6 +805,124 @@ export type SolanaClient = {
         {
           "name": "pause",
           "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "setDestination",
+      "discriminator": [
+        153,
+        118,
+        17,
+        95,
+        172,
+        62,
+        206,
+        93
+      ],
+      "accounts": [
+        {
+          "name": "clientInfo",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "destinationChainId",
+          "type": "u32"
+        },
+        {
+          "name": "destination",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "setPendingAccount",
+      "discriminator": [
+        179,
+        172,
+        228,
+        221,
+        155,
+        62,
+        75,
+        133
+      ],
+      "accounts": [
+        {
+          "name": "clientInfo"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "pendingAccount",
+          "writable": true
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "systemProgram"
+        }
+      ],
+      "args": [
+        {
+          "name": "account",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "setPendingAccountFee",
+      "discriminator": [
+        246,
+        73,
+        201,
+        65,
+        134,
+        42,
+        87,
+        238
+      ],
+      "accounts": [
+        {
+          "name": "clientInfo",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "fee",
+          "type": "u64"
         }
       ]
     },
@@ -786,22 +940,18 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "clientVault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
           "writable": true
         },
         {
           "name": "tokenMint",
-          "writable": true
-        },
-        {
-          "name": "payerAta",
-          "writable": true
-        },
-        {
-          "name": "clientVaultAta",
           "writable": true
         },
         {
@@ -810,18 +960,18 @@ export type SolanaClient = {
           "signer": true
         },
         {
-          "name": "tokenProgram"
-        },
-        {
-          "name": "message",
+          "name": "payerAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -842,8 +992,8 @@ export type SolanaClient = {
           "type": "u128"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -865,10 +1015,14 @@ export type SolanaClient = {
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "clientInfo"
         },
         {
-          "name": "clientVault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "messageInfo",
           "writable": true
         },
         {
@@ -876,31 +1030,23 @@ export type SolanaClient = {
           "writable": true
         },
         {
-          "name": "withdrawerAta",
-          "writable": true
-        },
-        {
-          "name": "clientVaultAta",
-          "writable": true
-        },
-        {
-          "name": "withdrawer",
+          "name": "receiver",
           "writable": true,
           "signer": true
         },
         {
-          "name": "tokenProgram"
-        },
-        {
-          "name": "message",
+          "name": "receiverAta",
           "writable": true
         },
         {
-          "name": "lastMessage",
+          "name": "clientAta",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "tokenProgram"
         },
         {
           "name": "systemProgram"
@@ -908,7 +1054,7 @@ export type SolanaClient = {
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "withdrawer",
           "type": {
             "array": [
               "u8",
@@ -921,8 +1067,8 @@ export type SolanaClient = {
           "type": "u128"
         },
         {
-          "name": "gasLimit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gasFee",
@@ -933,55 +1079,16 @@ export type SolanaClient = {
   ],
   "accounts": [
     {
-      "name": "client",
+      "name": "clientInfo",
       "discriminator": [
-        221,
-        237,
-        145,
-        143,
-        170,
-        194,
-        133,
-        115
-      ]
-    },
-    {
-      "name": "clientVault",
-      "discriminator": [
-        26,
-        124,
-        111,
-        142,
-        216,
-        66,
-        17,
-        42
-      ]
-    },
-    {
-      "name": "lastMessage",
-      "discriminator": [
-        0,
-        238,
-        239,
-        171,
-        78,
-        184,
-        70,
-        218
-      ]
-    },
-    {
-      "name": "link",
-      "discriminator": [
-        90,
-        57,
-        179,
-        207,
-        13,
-        91,
-        161,
-        190
+        182,
+        212,
+        93,
+        195,
+        37,
+        224,
+        196,
+        131
       ]
     },
     {
@@ -998,16 +1105,29 @@ export type SolanaClient = {
       ]
     },
     {
-      "name": "message",
+      "name": "messageInfo",
       "discriminator": [
-        110,
-        151,
-        23,
-        110,
-        198,
-        6,
-        125,
-        181
+        67,
+        192,
+        181,
+        94,
+        5,
+        197,
+        213,
+        97
+      ]
+    },
+    {
+      "name": "pendingAccountInfo",
+      "discriminator": [
+        142,
+        83,
+        93,
+        68,
+        20,
+        10,
+        148,
+        186
       ]
     },
     {
@@ -1027,8 +1147,8 @@ export type SolanaClient = {
   "errors": [
     {
       "code": 6000,
-      "name": "messageReceived",
-      "msg": "message received"
+      "name": "invalidInboundNonce",
+      "msg": "invalid inbound nonce"
     },
     {
       "code": 6001,
@@ -1048,7 +1168,7 @@ export type SolanaClient = {
   ],
   "types": [
     {
-      "name": "client",
+      "name": "clientInfo",
       "type": {
         "kind": "struct",
         "fields": [
@@ -1063,18 +1183,10 @@ export type SolanaClient = {
           {
             "name": "bump",
             "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "clientVault",
-      "type": {
-        "kind": "struct",
-        "fields": [
+          },
           {
-            "name": "bump",
-            "type": "u8"
+            "name": "pendingAccountFee",
+            "type": "u64"
           }
         ]
       }
@@ -1091,43 +1203,6 @@ export type SolanaClient = {
           {
             "name": "endpoint",
             "type": "pubkey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "lastMessage",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "message",
-            "type": "bytes"
-          },
-          {
-            "name": "bump",
-            "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "link",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "account",
-            "type": {
-              "array": [
-                "u8",
-                32
-              ]
-            }
-          },
-          {
-            "name": "bump",
-            "type": "u8"
           }
         ]
       }
@@ -1210,7 +1285,7 @@ export type SolanaClient = {
       }
     },
     {
-      "name": "message",
+      "name": "messageInfo",
       "type": {
         "kind": "struct",
         "fields": [
@@ -1219,12 +1294,47 @@ export type SolanaClient = {
             "type": "u128"
           },
           {
-            "name": "inboundNonce",
+            "name": "inboundNonceBitmap",
+            "type": {
+              "array": [
+                "u128",
+                11
+              ]
+            }
+          },
+          {
+            "name": "inboundNonceBuff",
+            "type": {
+              "array": [
+                "u128",
+                11
+              ]
+            }
+          },
+          {
+            "name": "inboundNonceMax",
             "type": "u128"
           },
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "defaultChainId",
+            "type": "u32"
+          },
+          {
+            "name": "destination",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "destinationChainId",
+            "type": "u32"
           }
         ]
       }
@@ -1241,6 +1351,27 @@ export type SolanaClient = {
           {
             "name": "lzTokenFee",
             "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pendingAccountInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
           }
         ]
       }
@@ -1273,29 +1404,14 @@ export type SolanaClient = {
       "value": "[67, 76, 73, 69, 78, 84, 95, 83, 69, 69, 68]"
     },
     {
-      "name": "clientVaultSeed",
+      "name": "messageInfoSeed",
       "type": "bytes",
-      "value": "[67, 76, 73, 69, 78, 84, 95, 86, 65, 85, 76, 84, 95, 83, 69, 69, 68]"
+      "value": "[77, 69, 83, 83, 65, 71, 69, 95, 73, 78, 70, 79, 95, 83, 69, 69, 68]"
     },
     {
-      "name": "linkSeed",
+      "name": "pendingAccountInfoSeed",
       "type": "bytes",
-      "value": "[76, 73, 78, 75, 95, 83, 69, 69, 68]"
-    },
-    {
-      "name": "lzDstEid",
-      "type": "u32",
-      "value": "40161"
-    },
-    {
-      "name": "messageSeed",
-      "type": "bytes",
-      "value": "[77, 69, 83, 83, 65, 71, 69, 95, 83, 69, 69, 68]"
-    },
-    {
-      "name": "solanaChainId",
-      "type": "u32",
-      "value": "103"
+      "value": "[80, 69, 78, 68, 73, 78, 71, 95, 65, 67, 67, 79, 85, 78, 84, 95, 73, 78, 70, 79, 95, 83, 69, 69, 68]"
     },
     {
       "name": "storeSeed",

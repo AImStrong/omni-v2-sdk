@@ -1,5 +1,5 @@
 import bs58 from "bs58";
-import { addressToBytes32, vecToBytes, base58ToVec } from './caster.js';
+import { addressToBytes32, vecToBytes, base58ToVec } from './caster.ts';
 
 export function detechAddressType(addr: string): "evm" | "solana" | "move" {
   if (!addr) throw new Error("cannot detech address");

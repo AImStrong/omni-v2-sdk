@@ -1,20 +1,20 @@
 import { stringToBytes, bytesToHex, numberToHex, padHex } from 'viem';
 import bs58 from 'bs58';
 
-export function stringToBytes32(str: string) {
+export function stringToBytes32(str: string): `0x{string}` {
   const bytes = stringToBytes(str);
   if (bytes.length > 32) throw new Error('String too long, cannot convert to bytes32');
   
   const padded = new Uint8Array(32);
   padded.set(bytes);
-  return bytesToHex(padded);
+  return bytesToHex(padded) as `0x{string}`;
 }
 
-export function numberToBytes32(n: number) {
-  return padHex(numberToHex(n), { size: 32 });
+export function numberToBytes32(n: number): `0x{string}` {
+  return padHex(numberToHex(n), { size: 32 }) as `0x{string}`;
 }
 
-export function addressToBytes32(address: string) {
+export function addressToBytes32(address: string): `0x{string}` {
   if (!address.startsWith('0x')) {
     throw new Error('Address must start with 0x');
   }
@@ -25,7 +25,7 @@ export function addressToBytes32(address: string) {
   if (!/^[0-9a-fA-F]{40}$/.test(hex)) {
     throw new Error('Address contains invalid characters');
   }
-  return '0x' + '0'.repeat(24) + hex.toLowerCase();
+  return ('0x' + '0'.repeat(24) + hex.toLowerCase()) as `0x{string}`;
 }
 
 export function bytesToVec(str: string): number[] {
@@ -40,13 +40,13 @@ export function bytesToVec(str: string): number[] {
   return result;
 }
 
-export function vecToBytes(vec: number[]): string {
+export function vecToBytes(vec: number[]): `0x{string}` {
   let result = "";
   for (let i = 0; i < vec.length; i++) {
     if (vec[i] > 255) throw new Error("not vec");
     result = result + vec[i].toString(16).padStart(2, "0");
   }
-  return '0x' + result;
+  return ('0x' + result) as `0x{string}`;
 }
 
 export function base58ToVec(bs: string): number[] {

@@ -1,5 +1,5 @@
 import { PublicKey } from "@solana/web3.js"
-import { Chain } from './chain.js';
+import { Chain } from './chain.ts';
 
 export interface Endpoint {
   endpoint: `0x{string}` | PublicKey;
@@ -41,4 +41,14 @@ export const endpoints: Record<Chain, Endpoint> = {
     sendLib: new PublicKey("7a4WjyR8VZ7yZz5XJAKm39BUGn5iT9CKcv2pmG9tdXVH"),
     executor: new PublicKey("6doghB248px58JSSwG4qejQ46kFMW4AMj7vzJnWZHNZn")
   }
+}
+
+export const chainIdToEid: Record<number, number> = {
+  11155111          : 40161, // sepolia
+  97                : 40102, // bscTestnet
+  42161             : 30110, // arbitrum
+  8453              : 30184, // base
+  56                : 30102, // bsc
+  101               : 30168, // solana
+  103               : 40168, // solanaDevnet
 }

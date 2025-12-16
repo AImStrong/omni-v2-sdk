@@ -1,18 +1,17 @@
 {
   "sepolia": {
-    "AddressesProvider": "0xc8517deaf274174ae533dcbd619fb7995c7784d6",
-    "Hub": "0xA1EE9914eBAEa2a7CDeDE9375dF19c1Aa1381429",
-    "AccountManager": "0x11d134e9645E9Dd94564afC7e2D56B34C85dB732",
-    "AssetManager": "0x4328CAA94F2670fdfb765C6D68a75353975451Eb",
-    "Message": "0xD4BA5F1fa751E6F0b434887f356CE664fc70D77E",
-    "GasFund": "0xcCE4D74d797bA66a3f98D773f72cBa5865b9ebd1",
-    "PoolAddressesProvider": "0xf5bc64c578c611398b6e5b8c226dbe916809c054",
-    "ACLManager": "0x48cd457626E56FD551FE3270f9f2e22cBcdCa652",
-    "DefaultReserveInterestRateStrategyV2": "0x6020f68815F49Cf0f742A6B39dde1e8Fdec046f4",
-    "Pool": "0x8d5b23D1785f00eC28AEF01e07b67A6633cb56B6",
-    "PoolConfigurator": "0xFc123461C99F6420970744CD0a858c13a5b2bCc6",
-    "ATokenInstance": "0xa2d1a85c513f81f7003a682aa9427394317a3d05",
-    "VariableDebtTokenInstance": "0xb0a796e4010f51b8e8782cc061f0f3aef446651a",
+    "AddressesProvider": "0x3b6a73af27a6c1fb5ba0b7bcade3c74db077a3ac",
+    "Hub": "0x8B7f0a87A9c11b7E43a3217B81ba2468bEd9b847",
+    "AccountManager": "0xe23f7aB94c81CDa20d570db0a983e3Bf3D424029",
+    "AssetManager": "0x4a41841F83f2d120FCBF08FF87d1e030e7e8Ae02",
+    "Message": "0x10D773DCCeF11CD02709Fa3C67960AaFC6A2a501",
+    "PoolAddressesProvider": "0x9cc59018b88b41e0ce618613d0e62e686339a740",
+    "ACLManager": "0x66C6E5DE7bBB64aE64D28C3914441BCd1bBc5f04",
+    "DefaultReserveInterestRateStrategyV2": "0x6D0e43bf558aeD0271829D51BC87Ae91152bE446",
+    "Pool": "0xFe4a112b3e0E13A1B1367a00b5d3D123A646b47e",
+    "PoolConfigurator": "0x04Aa72E1c19938A86b52311329a543c0708c5fd5",
+    "ATokenInstance": "0xa2af7d2744c203cf2f8250b9f30788ed73420fe3",
+    "VariableDebtTokenInstance": "0xb188668b6c33a369979cdcb43ac3735b87b6b05c",
     "PriceOracle": "0x75702f725d68f0b7854448a94a4aca06385a5005"
   }
 }

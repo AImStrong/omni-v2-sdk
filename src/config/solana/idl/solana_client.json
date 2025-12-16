@@ -1,5 +1,5 @@
 {
-  "address": "7vf6XHz6uepANiLrRNrzHdh9Cpf2ATMG4NHZryzCsDwJ",
+  "address": "8oEZisP7U671sivnGDKcPPxR43xVn4CNhtQxDfiueUaT",
   "metadata": {
     "name": "solana_client",
     "version": "0.1.0",
@@ -7,6 +7,81 @@
     "description": "Created with Anchor"
   },
   "instructions": [
+    {
+      "name": "approve",
+      "discriminator": [
+        69,
+        74,
+        217,
+        36,
+        115,
+        117,
+        97,
+        76
+      ],
+      "accounts": [
+        {
+          "name": "client_info"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
+          "writable": true
+        },
+        {
+          "name": "token_mint",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "owner_ata",
+          "writable": true
+        },
+        {
+          "name": "client_ata",
+          "writable": true
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "spender",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "amount",
+          "type": "u128"
+        },
+        {
+          "name": "options",
+          "type": "bytes"
+        },
+        {
+          "name": "gas_fee",
+          "type": "u64"
+        }
+      ]
+    },
     {
       "name": "borrow_token",
       "discriminator": [
@@ -21,10 +96,14 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "client_vault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
           "writable": true
         },
         {
@@ -32,31 +111,23 @@
           "writable": true
         },
         {
-          "name": "borrower_ata",
-          "writable": true
-        },
-        {
-          "name": "client_vault_ata",
-          "writable": true
-        },
-        {
-          "name": "borrower",
+          "name": "receiver",
           "writable": true,
           "signer": true
         },
         {
-          "name": "token_program"
-        },
-        {
-          "name": "message",
+          "name": "receiver_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -64,7 +135,7 @@
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "borrower",
           "type": {
             "array": [
               "u8",
@@ -77,8 +148,8 @@
           "type": "u128"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -100,38 +171,11 @@
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "client_info",
           "writable": true
         },
         {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        },
-        {
-          "name": "system_program"
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "init_client_vault",
-      "discriminator": [
-        169,
-        227,
-        219,
-        101,
-        143,
-        130,
-        82,
-        14
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "client_vault",
+          "name": "client",
           "writable": true
         },
         {
@@ -159,10 +203,10 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "message",
+          "name": "message_info",
           "writable": true
         },
         {
@@ -174,7 +218,12 @@
           "name": "system_program"
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "default_chain_id",
+          "type": "u32"
+        }
+      ]
     },
     {
       "name": "init_store",
@@ -190,7 +239,7 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
           "name": "payer",
@@ -221,26 +270,51 @@
       ]
     },
     {
-      "name": "link_account",
+      "name": "interest_bearing_token_transfer",
       "discriminator": [
-        68,
-        68,
+        133,
+        124,
         218,
-        40,
-        15,
-        50,
-        106,
-        97
+        3,
+        176,
+        218,
+        144,
+        208
       ],
       "accounts": [
         {
-          "name": "link",
+          "name": "client_info"
+        },
+        {
+          "name": "client",
           "writable": true
         },
         {
-          "name": "signer",
+          "name": "message_info",
+          "writable": true
+        },
+        {
+          "name": "token_mint",
+          "writable": true
+        },
+        {
+          "name": "owner",
           "writable": true,
           "signer": true
+        },
+        {
+          "name": "owner_ata",
+          "writable": true
+        },
+        {
+          "name": "client_ata",
+          "writable": true
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -248,13 +322,25 @@
       ],
       "args": [
         {
-          "name": "account",
+          "name": "spender",
           "type": {
             "array": [
               "u8",
               32
             ]
           }
+        },
+        {
+          "name": "amount",
+          "type": "u128"
+        },
+        {
+          "name": "options",
+          "type": "bytes"
+        },
+        {
+          "name": "gas_fee",
+          "type": "u64"
         }
       ]
     },
@@ -272,18 +358,14 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "client_vault",
+          "name": "client",
           "writable": true
         },
         {
-          "name": "payer_ata",
-          "writable": true
-        },
-        {
-          "name": "client_vault_ata",
+          "name": "message_info",
           "writable": true
         },
         {
@@ -296,21 +378,21 @@
           "signer": true
         },
         {
-          "name": "message",
+          "name": "liquidator_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
         },
         {
-          "name": "system_program"
+          "name": "token_program"
         },
         {
-          "name": "token_program"
+          "name": "system_program"
         }
       ],
       "args": [
@@ -341,8 +423,8 @@
           "type": "u128"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -373,11 +455,15 @@
           "writable": true
         },
         {
-          "name": "message",
+          "name": "client_info",
           "writable": true
         },
         {
-          "name": "client_vault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
           "writable": true
         },
         {
@@ -387,7 +473,7 @@
           "name": "token_mint"
         },
         {
-          "name": "client_vault_ata"
+          "name": "client_ata"
         },
         {
           "name": "user_ata"
@@ -457,6 +543,9 @@
       "accounts": [
         {
           "name": "store"
+        },
+        {
+          "name": "message_info"
         }
       ],
       "args": [
@@ -465,8 +554,8 @@
           "type": "bytes"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         }
       ],
       "returns": {
@@ -474,6 +563,43 @@
           "name": "MessagingFee"
         }
       }
+    },
+    {
+      "name": "receive_fee",
+      "discriminator": [
+        64,
+        133,
+        34,
+        163,
+        44,
+        108,
+        30,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "client_info",
+          "writable": true
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "value",
+          "type": "u64"
+        }
+      ]
     },
     {
       "name": "repay_token",
@@ -489,22 +615,18 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "client_vault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
           "writable": true
         },
         {
           "name": "token_mint",
-          "writable": true
-        },
-        {
-          "name": "payer_ata",
-          "writable": true
-        },
-        {
-          "name": "client_vault_ata",
           "writable": true
         },
         {
@@ -513,18 +635,18 @@
           "signer": true
         },
         {
-          "name": "token_program"
-        },
-        {
-          "name": "message",
+          "name": "payer_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -532,7 +654,7 @@
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "repayer",
           "type": {
             "array": [
               "u8",
@@ -545,105 +667,8 @@
           "type": "u128"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
-        },
-        {
-          "name": "gas_fee",
-          "type": "u64"
-        }
-      ]
-    },
-    {
-      "name": "reset_inbound_nonce",
-      "discriminator": [
-        173,
-        47,
-        38,
-        54,
-        202,
-        228,
-        201,
-        172
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "message",
-          "writable": true
-        },
-        {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "reset_outbound_nonce",
-      "discriminator": [
-        24,
-        131,
-        254,
-        152,
-        197,
-        18,
-        121,
-        193
-      ],
-      "accounts": [
-        {
-          "name": "client"
-        },
-        {
-          "name": "message",
-          "writable": true
-        },
-        {
-          "name": "admin",
-          "writable": true,
-          "signer": true
-        }
-      ],
-      "args": []
-    },
-    {
-      "name": "send",
-      "discriminator": [
-        102,
-        251,
-        20,
-        187,
-        65,
-        75,
-        12,
-        69
-      ],
-      "accounts": [
-        {
-          "name": "store",
-          "docs": [
-            "OApp Store PDA that signs the send instruction"
-          ]
-        },
-        {
-          "name": "message"
-        },
-        {
-          "name": "last_message"
-        }
-      ],
-      "args": [
-        {
-          "name": "sender",
-          "type": "pubkey"
-        },
-        {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -665,7 +690,15 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
+          "writable": true
         },
         {
           "name": "token_mint",
@@ -677,15 +710,18 @@
           "signer": true
         },
         {
-          "name": "message",
+          "name": "user_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -697,8 +733,8 @@
           "type": "bool"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -720,7 +756,7 @@
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "client_info",
           "writable": true
         },
         {
@@ -750,7 +786,7 @@
       ],
       "accounts": [
         {
-          "name": "client",
+          "name": "client_info",
           "writable": true
         },
         {
@@ -763,6 +799,124 @@
         {
           "name": "pause",
           "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "set_destination",
+      "discriminator": [
+        153,
+        118,
+        17,
+        95,
+        172,
+        62,
+        206,
+        93
+      ],
+      "accounts": [
+        {
+          "name": "client_info",
+          "writable": true
+        },
+        {
+          "name": "message_info",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "destination_chain_id",
+          "type": "u32"
+        },
+        {
+          "name": "destination",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_pending_account",
+      "discriminator": [
+        179,
+        172,
+        228,
+        221,
+        155,
+        62,
+        75,
+        133
+      ],
+      "accounts": [
+        {
+          "name": "client_info"
+        },
+        {
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "pending_account",
+          "writable": true
+        },
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "account",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_pending_account_fee",
+      "discriminator": [
+        246,
+        73,
+        201,
+        65,
+        134,
+        42,
+        87,
+        238
+      ],
+      "accounts": [
+        {
+          "name": "client_info",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "fee",
+          "type": "u64"
         }
       ]
     },
@@ -780,22 +934,18 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "client_vault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
           "writable": true
         },
         {
           "name": "token_mint",
-          "writable": true
-        },
-        {
-          "name": "payer_ata",
-          "writable": true
-        },
-        {
-          "name": "client_vault_ata",
           "writable": true
         },
         {
@@ -804,18 +954,18 @@
           "signer": true
         },
         {
-          "name": "token_program"
-        },
-        {
-          "name": "message",
+          "name": "payer_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -836,8 +986,8 @@
           "type": "u128"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -859,10 +1009,14 @@
       ],
       "accounts": [
         {
-          "name": "client"
+          "name": "client_info"
         },
         {
-          "name": "client_vault",
+          "name": "client",
+          "writable": true
+        },
+        {
+          "name": "message_info",
           "writable": true
         },
         {
@@ -870,31 +1024,23 @@
           "writable": true
         },
         {
-          "name": "withdrawer_ata",
-          "writable": true
-        },
-        {
-          "name": "client_vault_ata",
-          "writable": true
-        },
-        {
-          "name": "withdrawer",
+          "name": "receiver",
           "writable": true,
           "signer": true
         },
         {
-          "name": "token_program"
-        },
-        {
-          "name": "message",
+          "name": "receiver_ata",
           "writable": true
         },
         {
-          "name": "last_message",
+          "name": "client_ata",
           "writable": true
         },
         {
           "name": "store"
+        },
+        {
+          "name": "token_program"
         },
         {
           "name": "system_program"
@@ -902,7 +1048,7 @@
       ],
       "args": [
         {
-          "name": "receiver",
+          "name": "withdrawer",
           "type": {
             "array": [
               "u8",
@@ -915,8 +1061,8 @@
           "type": "u128"
         },
         {
-          "name": "gas_limit",
-          "type": "u128"
+          "name": "options",
+          "type": "bytes"
         },
         {
           "name": "gas_fee",
@@ -927,55 +1073,16 @@
   ],
   "accounts": [
     {
-      "name": "Client",
+      "name": "ClientInfo",
       "discriminator": [
-        221,
-        237,
-        145,
-        143,
-        170,
-        194,
-        133,
-        115
-      ]
-    },
-    {
-      "name": "ClientVault",
-      "discriminator": [
-        26,
-        124,
-        111,
-        142,
-        216,
-        66,
-        17,
-        42
-      ]
-    },
-    {
-      "name": "LastMessage",
-      "discriminator": [
-        0,
-        238,
-        239,
-        171,
-        78,
-        184,
-        70,
-        218
-      ]
-    },
-    {
-      "name": "Link",
-      "discriminator": [
-        90,
-        57,
-        179,
-        207,
-        13,
-        91,
-        161,
-        190
+        182,
+        212,
+        93,
+        195,
+        37,
+        224,
+        196,
+        131
       ]
     },
     {
@@ -992,16 +1099,29 @@
       ]
     },
     {
-      "name": "Message",
+      "name": "MessageInfo",
       "discriminator": [
-        110,
-        151,
-        23,
-        110,
-        198,
-        6,
-        125,
-        181
+        67,
+        192,
+        181,
+        94,
+        5,
+        197,
+        213,
+        97
+      ]
+    },
+    {
+      "name": "PendingAccountInfo",
+      "discriminator": [
+        142,
+        83,
+        93,
+        68,
+        20,
+        10,
+        148,
+        186
       ]
     },
     {
@@ -1021,8 +1141,8 @@
   "errors": [
     {
       "code": 6000,
-      "name": "MessageReceived",
-      "msg": "message received"
+      "name": "InvalidInboundNonce",
+      "msg": "invalid inbound nonce"
     },
     {
       "code": 6001,
@@ -1042,7 +1162,7 @@
   ],
   "types": [
     {
-      "name": "Client",
+      "name": "ClientInfo",
       "type": {
         "kind": "struct",
         "fields": [
@@ -1057,18 +1177,10 @@
           {
             "name": "bump",
             "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "ClientVault",
-      "type": {
-        "kind": "struct",
-        "fields": [
+          },
           {
-            "name": "bump",
-            "type": "u8"
+            "name": "pending_account_fee",
+            "type": "u64"
           }
         ]
       }
@@ -1085,43 +1197,6 @@
           {
             "name": "endpoint",
             "type": "pubkey"
-          }
-        ]
-      }
-    },
-    {
-      "name": "LastMessage",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "message",
-            "type": "bytes"
-          },
-          {
-            "name": "bump",
-            "type": "u8"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Link",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "account",
-            "type": {
-              "array": [
-                "u8",
-                32
-              ]
-            }
-          },
-          {
-            "name": "bump",
-            "type": "u8"
           }
         ]
       }
@@ -1204,7 +1279,7 @@
       }
     },
     {
-      "name": "Message",
+      "name": "MessageInfo",
       "type": {
         "kind": "struct",
         "fields": [
@@ -1213,12 +1288,47 @@
             "type": "u128"
           },
           {
-            "name": "inbound_nonce",
+            "name": "inbound_nonce_bitmap",
+            "type": {
+              "array": [
+                "u128",
+                11
+              ]
+            }
+          },
+          {
+            "name": "inbound_nonce_buff",
+            "type": {
+              "array": [
+                "u128",
+                11
+              ]
+            }
+          },
+          {
+            "name": "inbound_nonce_max",
             "type": "u128"
           },
           {
             "name": "bump",
             "type": "u8"
+          },
+          {
+            "name": "default_chain_id",
+            "type": "u32"
+          },
+          {
+            "name": "destination",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "destination_chain_id",
+            "type": "u32"
           }
         ]
       }
@@ -1235,6 +1345,27 @@
           {
             "name": "lz_token_fee",
             "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PendingAccountInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
           }
         ]
       }
@@ -1267,29 +1398,14 @@
       "value": "[67, 76, 73, 69, 78, 84, 95, 83, 69, 69, 68]"
     },
     {
-      "name": "CLIENT_VAULT_SEED",
+      "name": "MESSAGE_INFO_SEED",
       "type": "bytes",
-      "value": "[67, 76, 73, 69, 78, 84, 95, 86, 65, 85, 76, 84, 95, 83, 69, 69, 68]"
+      "value": "[77, 69, 83, 83, 65, 71, 69, 95, 73, 78, 70, 79, 95, 83, 69, 69, 68]"
     },
     {
-      "name": "LINK_SEED",
+      "name": "PENDING_ACCOUNT_INFO_SEED",
       "type": "bytes",
-      "value": "[76, 73, 78, 75, 95, 83, 69, 69, 68]"
-    },
-    {
-      "name": "LZ_DST_EID",
-      "type": "u32",
-      "value": "40161"
-    },
-    {
-      "name": "MESSAGE_SEED",
-      "type": "bytes",
-      "value": "[77, 69, 83, 83, 65, 71, 69, 95, 83, 69, 69, 68]"
-    },
-    {
-      "name": "SOLANA_CHAIN_ID",
-      "type": "u32",
-      "value": "103"
+      "value": "[80, 69, 78, 68, 73, 78, 71, 95, 65, 67, 67, 79, 85, 78, 84, 95, 73, 78, 70, 79, 95, 83, 69, 69, 68]"
     },
     {
       "name": "STORE_SEED",

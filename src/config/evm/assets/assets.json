@@ -84,6 +84,12 @@
       "symbol": "SOL",
       "decimals": 9,
       "address": "0xb28ee1f4ae2c8082a6c06c446c79ad8173d988e4"
+    },
+    "DAI": {
+      "name": "Dai Stablecoin",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0x136fdfa51e67c0881dd189e5edc814bd796f49d2"
     }
   },
   "sepolia": {
