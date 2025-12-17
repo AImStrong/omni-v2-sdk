@@ -76,7 +76,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -151,7 +151,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -338,7 +338,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -426,7 +426,7 @@ export type SolanaClient = {
         },
         {
           "name": "debtToCover",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -670,7 +670,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -989,7 +989,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -1064,7 +1064,7 @@ export type SolanaClient = {
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",

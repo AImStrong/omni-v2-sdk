@@ -27,6 +27,31 @@ export async function getUserData(
   }
 }
 
+interface DataRawInterface {
+  totalCollateralBaseRaw: bigint;
+  totalDebtBaseRaw: bigint;
+  availableBorrowsBaseRaw: bigint;
+  currentLiquidationThresholdRaw: bigint;
+  ltvRaw: bigint;
+  healthFactorRaw: bigint;
+}
+
+export async function getUserDataRaw(
+  hubChain: EVM,
+  account: `0x{string}`,
+  options: EVMOptions = {}
+): Promise<DataRawInterface> {
+  const data: bigint[] = await pool(hubChain, options).read.getUserAccountData([account]) as bigint[];
+  return {
+    totalCollateralBaseRaw: data[0],
+    totalDebtBaseRaw: data[1],
+    availableBorrowsBaseRaw: data[2],
+    currentLiquidationThresholdRaw: data[3],
+    ltvRaw: data[4],
+    healthFactorRaw: data[5]
+  }
+}
+
 export async function getUserConfiguration(
   hubChain: EVM,
   account: `0x{string}`,

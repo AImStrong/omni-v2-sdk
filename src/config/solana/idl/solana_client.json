@@ -70,7 +70,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -145,7 +145,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -332,7 +332,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -420,7 +420,7 @@
         },
         {
           "name": "debt_to_cover",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -664,7 +664,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -983,7 +983,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
@@ -1058,7 +1058,7 @@
         },
         {
           "name": "amount",
-          "type": "u128"
+          "type": "u64"
         },
         {
           "name": "options",
