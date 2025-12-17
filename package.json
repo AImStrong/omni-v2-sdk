@@ -1,6 +1,6 @@
 {
   "name": "@aimstrong/omni-v2-sdk",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "Helper for omni-v2-core and omni-v2-solana-client",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,13 +24,14 @@
     "tsx": "^4.20.6"
   },
   "dependencies": {
-    "@layerzerolabs/lz-solana-sdk-v2": "^3.0.150",
-    "@types/node": "^24.10.1",
     "@coral-xyz/anchor": "^0.31.1",
+    "@layerzerolabs/lz-solana-sdk-v2": "^3.0.150",
     "@solana/spl-token": "^0.4.14",
     "@solana/web3.js": "^1.98.4",
-    "viem": "^2.39.3",
+    "@types/node": "^24.10.1",
     "axios": "^1.13.2",
-    "typescript": "^5.9.3"
+    "bn.js": "^5.2.2",
+    "typescript": "^5.9.3",
+    "viem": "^2.39.3"
   }
 }

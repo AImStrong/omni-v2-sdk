@@ -8,9 +8,11 @@
 // import { quoteEVM, quoteSolana } from './index'
 // import { isERC20Permit, getPermit } from './index';
 import { hubToClientBalance } from './index';
+import * as anchor from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
 
 async function main() {
-  console.log(await hubToClientBalance("sepolia", "solanaDevnet"));
+  console.log(new anchor.Wallet(Keypair.fromSecretKey(new Uint8Array([139,151,153,132,205,21,196,101,29,157,33,142,252,151,220,143,216,119,99,59,187,61,70,208,128,160,249,38,135,191,96,49,99,166,130,93,207,158,144,93,216,215,207,91,188,171,107,92,252,180,250,142,31,38,139,17,13,10,51,99,35,149,5,52]))))
 }
 
 main().then().catch(err => console.log(err));

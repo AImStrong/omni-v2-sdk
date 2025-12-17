@@ -6,7 +6,7 @@ import { SolanaClient } from './types/solana_client.ts';
 
 export interface SolanaOptions {
   connection?: Connection;
-  wallet?: anchor.Wallet;
+  wallet?: any;
   provider?: anchor.Provider;
 }
 
