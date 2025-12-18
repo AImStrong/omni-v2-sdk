@@ -3,7 +3,7 @@ import { clientMessage, EVMOptions } from '../../config/evm/contract';
 import { solanaClientProgram, SolanaOptions } from '../../config/solana/program';
 import { pdas, accounts } from '../../config/solana/config';
 import { divBigint } from '../../utils/index';
-import { Options } from "@layerzerolabs/lz-v2-utilities";
+import { Options } from "../../config/layerzero";
 
 interface FeeInterface {
   feeRaw: bigint;
@@ -27,7 +27,9 @@ export async function quoteSolana(
   clientChain: Solana,
   gasLimit: bigint,
   options: SolanaOptions = {}
-): Promise<FeeInterface> {
+): Promise<FeeInterface|null> {
+  if (!options.wallet && !options.provider) return null;
+
   const program = solanaClientProgram(clientChain, options);
 
   const lzOptions = Buffer.from(Options.newOptions().addExecutorLzReceiveOption(gasLimit).toBytes())

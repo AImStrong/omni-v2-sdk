@@ -1,5 +1,7 @@
 import { PublicKey } from "@solana/web3.js"
 import { Chain } from './chain.ts';
+export { EndpointProgram, UlnProgram } from "@layerzerolabs/lz-solana-sdk-v2";
+export { Options } from "@layerzerolabs/lz-v2-utilities";
 
 export interface Endpoint {
   endpoint: `0x{string}` | PublicKey;

@@ -1,5 +1,5 @@
 import { PublicKey } from "@solana/web3.js"
-import { EndpointProgram, UlnProgram } from '@layerzerolabs/lz-solana-sdk-v2'
+import { EndpointProgram, UlnProgram } from '../layerzero.ts';
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { vecToBytes } from "../../utils/index.ts";
 import { endpoints, chainIdToEid } from '../layerzero.ts';
@@ -43,7 +43,7 @@ export const accounts: any = {
             new UlnProgram.Uln(sendLib.programId)
         );
     },
-    remainingAccountsForRegistryOApp: (chainType: Solana, pubkey: PublicKey) => {
+    remainingAccountsForRegisterOApp: (chainType: Solana, pubkey: PublicKey) => {
         const endpoint = new EndpointProgram.Endpoint(endpoints[chainType].endpoint as PublicKey);
         return endpoint.getRegisterOappIxAccountMetaForCPI(pubkey, pdas.store(chainType));
     },
