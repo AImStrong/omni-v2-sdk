@@ -1,12 +1,12 @@
 import { Connection } from "@solana/web3.js";
 import { Solana, chain } from "../chain.ts";
-import { Provider, Program, AnchorProvider } from "@coral-xyz/anchor";
+import { Provider, Program, AnchorProvider, Wallet } from "@coral-xyz/anchor";
 import solanaClientIdl from './idl/solana_client.json';
 import { SolanaClient } from './types/solana_client.ts';
 
 export interface SolanaOptions {
   connection?: Connection;
-  wallet?: any;
+  wallet?: Wallet;
   provider?: Provider;
 }
 

@@ -3,7 +3,7 @@ import { clientMessage, EVMOptions } from '../../config/evm/contract';
 import { solanaClientProgram, SolanaOptions } from '../../config/solana/program';
 import { pdas, accounts } from '../../config/solana/config';
 import { divBigint } from '../../utils/index';
-import { Options } from "../../config/layerzero";
+import { Options } from "@layerzerolabs/lz-v2-utilities";
 
 interface FeeInterface {
   feeRaw: bigint;
@@ -37,7 +37,7 @@ export async function quoteSolana(
   const feeRaw = BigInt((await program.methods.quoteSend(Buffer.from([1, 1]), lzOptions).accounts({
     store: pdas.store(clientChain),
     messageInfo: pdas.messageInfo(clientChain)
-  }).remainingAccounts(await accounts.remainingAccountsForQuote(clientChain, program.provider.publicKey, options)).view()).nativeFee.toString());
+  }).remainingAccounts(await accounts.remainingAccountsForQuote(clientChain, program.provider.publicKey!, options)).view()).nativeFee.toString());
 
   return {
     feeRaw: feeRaw,

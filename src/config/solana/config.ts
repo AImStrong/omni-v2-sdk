@@ -1,12 +1,12 @@
-import { PublicKey } from "@solana/web3.js"
-import { EndpointProgram, UlnProgram } from '../layerzero.ts';
+import { AccountMeta, PublicKey } from "@solana/web3.js"
+import { EndpointProgram, UlnProgram } from '@layerzerolabs/lz-solana-sdk-v2';
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { vecToBytes } from "../../utils/index.ts";
 import { endpoints, chainIdToEid } from '../layerzero.ts';
 import { Solana } from '../chain.ts';
 import { solanaClientProgram, SolanaOptions } from './program.ts';
 
-export const seeds: any = {
+export const seeds = {
     CLIENT_SEED: Buffer.from("CLIENT_SEED"),
     CLIENT_INFO_SEED: Buffer.from("CLIENT_INFO_SEED"),
     MESSAGE_INFO_SEED: Buffer.from("MESSAGE_INFO_SEED"),
@@ -15,7 +15,7 @@ export const seeds: any = {
     PENDING_ACCOUNT_INFO_SEED: Buffer.from("PENDING_ACCOUNT_INFO_SEED"),
 }
 
-export const pdas: any = {
+export const pdas = {
     ata: (tokenMint: PublicKey, pubkey: PublicKey, isPda: boolean) => getAssociatedTokenAddressSync(tokenMint, pubkey, isPda),
     client: (chainType: Solana) => PublicKey.findProgramAddressSync([seeds.CLIENT_SEED], solanaClientProgram(chainType).programId)[0],
     clientInfo: (chainType: Solana) => PublicKey.findProgramAddressSync([seeds.CLIENT_INFO_SEED], solanaClientProgram(chainType).programId)[0],
@@ -25,7 +25,11 @@ export const pdas: any = {
     pendingAccountInfo: (chainType: Solana, pubkey: PublicKey) => PublicKey.findProgramAddressSync([seeds.PENDING_ACCOUNT_INFO_SEED, pubkey.toBuffer()], solanaClientProgram(chainType).programId)[0],
 }
 
-export const accounts: any = {
+export const accounts: {
+    remainingAccountsForSend: (chainType: Solana, pubkey: PublicKey, options?: SolanaOptions) => Promise<AccountMeta[]>;
+    remainingAccountsForRegisterOApp: (chainType: Solana, pubkey: PublicKey) => AccountMeta[];
+    remainingAccountsForQuote: (chainType: Solana, pubkey: PublicKey, options?: SolanaOptions) => Promise<AccountMeta[]>;
+} = {
     remainingAccountsForSend: async (chainType: Solana, pubkey: PublicKey, options: SolanaOptions = {}) => {
         const endpoint = new EndpointProgram.Endpoint(endpoints[chainType].endpoint as PublicKey);
         const program = solanaClientProgram(chainType, options);

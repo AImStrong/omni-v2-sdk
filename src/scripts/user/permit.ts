@@ -43,7 +43,7 @@ export async function getPermit(
 
   const [name, nonce] = await Promise.all([
     asset.read.name(),
-    asset.read.nonces([options.wallet.account.address])
+    asset.read.nonces([options.wallet.account!.address])
   ]);
 
   const deadline = Math.floor(Date.now() / 1000) + 3600;
@@ -66,7 +66,7 @@ export async function getPermit(
   };
 
   const message = {
-    owner: options.wallet.account.address,
+    owner: options.wallet.account!.address,
     spender: spender,
     value: amount,
     nonce,
@@ -74,7 +74,7 @@ export async function getPermit(
   };
 
   const signature = await options.wallet.signTypedData({
-    account: options.wallet.account,
+    account: options.wallet.account!,
     domain: domain as any,
     types: types,
     primaryType: "Permit",
