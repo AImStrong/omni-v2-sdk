@@ -1,4 +1,4 @@
-[
+export default [
   {
     "inputs": [],
     "name": "Create2EmptyBytecode",
@@ -176,4 +176,4 @@
     "stateMutability": "nonpayable",
     "type": "function"
   }
-]
+];

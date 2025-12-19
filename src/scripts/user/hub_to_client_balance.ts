@@ -1,5 +1,5 @@
 import { EVM, chain, Chain } from '../../config/chain';
-import { EVMOptions, hubMessage, hub } from '../../config/evm/contract';
+import { EVMOptions, hubMessage, hub } from '../../config/evm/contract.evm';
 import { createPublicClient, http } from 'viem';
 
 interface HubToClientBalanceInterface {
@@ -18,8 +18,8 @@ export async function hubToClientBalance(
   });
 
   const [balanceRaw, feeRaw] = await Promise.all([
-    publicClient.getBalance({address: hub(hubChain, options).address}),
-    hubMessage(hubChain, options).read.gasFee([chain[clientChain].id, "0x123", 500_000n])
+    publicClient.getBalance({address: hub(hubChain, options).address}) as Promise<bigint>,
+    hubMessage(hubChain, options).read.gasFee([chain[clientChain].id, "0x123", 500_000n]) as Promise<bigint>
   ])
 
   const balanceRawNeededToBridge: bigint = (balanceRaw < feeRaw) ? feeRaw - balanceRaw : 0n;

@@ -4,7 +4,7 @@ import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { vecToBytes } from "../../utils/index.ts";
 import { endpoints, chainIdToEid } from '../layerzero.ts';
 import { Solana } from '../chain.ts';
-import { solanaClientProgram, SolanaOptions } from './program.ts';
+import { solanaClientProgram, SolanaOptions } from './program.solana.ts';
 
 export const seeds = {
     CLIENT_SEED: Buffer.from("CLIENT_SEED"),

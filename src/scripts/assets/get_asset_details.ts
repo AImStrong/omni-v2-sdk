@@ -1,5 +1,5 @@
 import { Chain, EVM, chain } from '../../config/chain';
-import { priceOracle, token, pool, EVMOptions, assetManager, rateModel } from '../../config/evm/contract';
+import { priceOracle, token, pool, EVMOptions, assetManager, rateModel } from '../../config/evm/contract.evm';
 import { divBigint, convertToBytes32 } from '../../utils/index';
 import { decodeConfiguration } from '../lending/decode_configuration';
 
@@ -37,12 +37,12 @@ export async function getAssetDetails(
   const assetManagerContract = assetManager(hubChain, options);
   const rateModelContract = rateModel(hubChain, options);
 
-  const omniAssetAddress: `0x{string}` = await assetManagerContract.read.getAsset([chain[originChain].id, convertToBytes32(asset)]);
+  const omniAssetAddress: `0x{string}` = await assetManagerContract.read.getAsset([chain[originChain].id, convertToBytes32(asset)]) as `0x{string}`;
 
   const [reserve, rawPrice, rateData] = await Promise.all([
-    poolContract.read.getReserveData([omniAssetAddress]),
-    priceOracleContract.read.getAssetPrice([omniAssetAddress]),
-    rateModelContract.read.getInterestRateData([omniAssetAddress])
+    poolContract.read.getReserveData([omniAssetAddress]) as Promise<any>,
+    priceOracleContract.read.getAssetPrice([omniAssetAddress]) as Promise<bigint>,
+    rateModelContract.read.getInterestRateData([omniAssetAddress]) as Promise<any>
   ]);
 
   const id: number = reserve.id;
@@ -52,9 +52,9 @@ export async function getAssetDetails(
   const price: number = parseFloat(divBigint(rawPrice, 10n ** 8n, 8));
 
   const [totalSupplyRaw, totalBorrowRaw, availableLiquidityRaw] = await Promise.all([
-    token(hubChain, aToken, options).read.totalSupply(),
-    token(hubChain, debtToken, options).read.totalSupply(),
-    token(hubChain, omniAssetAddress, options).read.balanceOf([aToken])
+    token(hubChain, aToken, options).read.totalSupply() as Promise<bigint>,
+    token(hubChain, debtToken, options).read.totalSupply() as Promise<bigint>,
+    token(hubChain, omniAssetAddress, options).read.balanceOf([aToken]) as Promise<bigint>
   ]);
 
   return {

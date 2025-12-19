@@ -1,7 +1,7 @@
 import { EVM, Solana } from '../../config/chain';
-import { clientMessage, EVMOptions } from '../../config/evm/contract';
-import { solanaClientProgram, SolanaOptions } from '../../config/solana/program';
-import { pdas, accounts } from '../../config/solana/config';
+import { clientMessage, EVMOptions } from '../../config/evm/contract.evm';
+import { solanaClientProgram, SolanaOptions } from '../../config/solana/program.solana';
+import { pdas, accounts } from '../../config/solana/config.solana';
 import { divBigint } from '../../utils/index';
 import { Options } from "@layerzerolabs/lz-v2-utilities";
 
@@ -16,7 +16,7 @@ export async function quoteEVM(
   gasLimit: bigint,
   options: EVMOptions = {}
 ): Promise<FeeInterface> {
-  const feeRaw: bigint = await clientMessage(clientChain, options).read.gasFee([destinationChainId, "0x123", gasLimit]);
+  const feeRaw: bigint = await clientMessage(clientChain, options).read.gasFee([destinationChainId, "0x123", gasLimit]) as bigint;
   return {
     feeRaw: feeRaw,
     fee: parseFloat(divBigint(feeRaw, 10n ** 18n, 18))

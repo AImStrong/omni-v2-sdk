@@ -1,4 +1,4 @@
-[
+export default [
   {
     "inputs": [],
     "name": "BASE_CURRENCY",
@@ -44,4 +44,4 @@
     "stateMutability": "view",
     "type": "function"
   }
-]
+];

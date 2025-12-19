@@ -1,5 +1,5 @@
 import { EVM } from '../../config/chain';
-import { pool, priceOracle, token, EVMOptions } from '../../config/evm/contract';
+import { pool, priceOracle, token, EVMOptions } from '../../config/evm/contract.evm';
 import { divBigint } from '../../utils/index';
 
 export async function poolTotalMarketSize(
@@ -14,12 +14,12 @@ export async function poolTotalMarketSize(
   let totalPriceRaw: bigint = 0n;
   for (const asset of assets) {
     const [rawPrice, aToken, decimals] = await Promise.all([
-      priceOracleContract.read.getAssetPrice([asset]),
-      poolContract.read.getReserveAToken([asset]),
-      token(hubChain, asset, options).read.decimals()
+      priceOracleContract.read.getAssetPrice([asset]) as Promise<bigint>,
+      poolContract.read.getReserveAToken([asset]) as Promise<`0x{string}`>,
+      token(hubChain, asset, options).read.decimals() as Promise<number>
     ]);
 
-    const supply: bigint = await token(hubChain, aToken, options).read.totalSupply()
+    const supply: bigint = await token(hubChain, aToken, options).read.totalSupply() as bigint
 
     totalPriceRaw = totalPriceRaw + rawPrice * supply * 10n**19n / 10n**BigInt(decimals);
   }
@@ -39,9 +39,9 @@ export async function poolTotalBorrows(
   let totalPriceRaw: bigint = 0n;
   for (const asset of assets) {
     const [rawPrice, debtToken, decimals] = await Promise.all([
-      priceOracleContract.read.getAssetPrice([asset]),
-      poolContract.read.getReserveVariableDebtToken([asset]),
-      token(hubChain, asset, options).read.decimals()
+      priceOracleContract.read.getAssetPrice([asset]) as Promise<bigint>,
+      poolContract.read.getReserveVariableDebtToken([asset]) as Promise<`0x{string}`>,
+      token(hubChain, asset, options).read.decimals() as Promise<number>
     ]);
 
     const borrow: bigint = await token(hubChain, debtToken, options).read.totalSupply() as bigint;
@@ -64,9 +64,9 @@ export async function poolTotalAvailable(
   let totalPriceRaw: bigint = 0n;
   for (const asset of assets) {
     const [rawPrice, aToken, decimals] = await Promise.all([
-      priceOracleContract.read.getAssetPrice([asset]),
-      poolContract.read.getReserveAToken([asset]),
-      token(hubChain, asset, options).read.decimals()
+      priceOracleContract.read.getAssetPrice([asset]) as Promise<bigint>,
+      poolContract.read.getReserveAToken([asset]) as Promise<`0x{string}`>,
+      token(hubChain, asset, options).read.decimals() as Promise<number>
     ]);
 
     const available: bigint = await token(hubChain, asset, options).read.balanceOf([aToken]) as bigint;

@@ -1,8 +1,8 @@
-import assets from '../../config/evm/assets/assets.json';
-import omniAssets from '../../config/evm/assets/omni_assets.json';
-import reserves from '../../config/evm/assets/reserves.json';
+import assets from '../../config/assets/assets.asset';
+import omniAssets from '../../config/assets/omni_assets.asset';
+import reserves from '../../config/assets/reserves.asset';
 import { Chain, EVM } from '../../config/chain';
-import { priceOracle, token, pool, EVMOptions } from '../../config/evm/contract';
+import { priceOracle, token, pool, EVMOptions } from '../../config/evm/contract.evm';
 import { divBigint } from '../../utils/index';
 
 interface AssetInterface {
@@ -48,11 +48,11 @@ export async function getAssetsList(
       const debtToken: `0x{string}` = (omniAssets as any)[ccc][key].variableDebtToken;
 
       const [rawPrice, totalSupplyRaw, totalBorrowRaw, availableLiquidityRaw, reserve] = await Promise.all([
-        priceOracleContract.read.getAssetPrice([omniAssetAddress]),
-        token(hubChain, aToken, options).read.totalSupply(),
-        token(hubChain, debtToken, options).read.totalSupply(),
-        token(hubChain, omniAssetAddress, options).read.balanceOf([aToken]),
-        poolContract.read.getReserveData([omniAssetAddress])
+        priceOracleContract.read.getAssetPrice([omniAssetAddress]) as Promise<bigint>,
+        token(hubChain, aToken, options).read.totalSupply() as Promise<bigint>,
+        token(hubChain, debtToken, options).read.totalSupply() as Promise<bigint>,
+        token(hubChain, omniAssetAddress, options).read.balanceOf([aToken]) as Promise<bigint>,
+        poolContract.read.getReserveData([omniAssetAddress]) as Promise<any>
       ])
 
       const id: number = reserve.id;

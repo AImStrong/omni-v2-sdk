@@ -1,4 +1,4 @@
-[
+export default [
   {
     "inputs": [],
     "name": "AssetNotListed",
@@ -1387,4 +1387,4 @@
     "stateMutability": "nonpayable",
     "type": "function"
   }
-]
+];

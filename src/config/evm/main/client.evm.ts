@@ -1,4 +1,4 @@
-{
+export default {
   "sepolia": {
     "AddressesProvider": "0x2cf6627e8951476d5767bf18f701132e3725c78a",
     "Client": "0xe7DA3E630722161345debC9F3a6914fF30d64Cf1",
@@ -11,4 +11,4 @@
     "ClientVault": "0x7b2EBf61Ae25AC012d89925D81448228A8740b73",
     "Message": "0xc4454700f53cBc8E22E16769Cdb3553562C7652c"
   }
-}
+};

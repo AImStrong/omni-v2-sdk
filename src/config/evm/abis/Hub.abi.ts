@@ -1,4 +1,4 @@
-[
+export default [
   {
     "anonymous": false,
     "inputs": [
@@ -209,12 +209,12 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "linker",
+        "name": "user",
         "type": "address"
       },
       {
         "internalType": "bool",
-        "name": "linkable",
+        "name": "permit",
         "type": "bool"
       }
     ],
@@ -271,4 +271,4 @@
     "stateMutability": "payable",
     "type": "receive"
   }
-]
+];

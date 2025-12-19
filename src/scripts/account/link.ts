@@ -1,9 +1,9 @@
 import { convertToBytes32, vecToBytes } from '../../utils/index';
 import { PublicKey } from "@solana/web3.js";
 import { EVM } from '../../config/chain';
-import { pdas } from '../../config/solana/config';
-import { accountManager, EVMOptions, hub } from '../../config/evm/contract';
-import { solanaClientProgram, SolanaOptions } from '../../config/solana/program';
+import { pdas } from '../../config/solana/config.solana';
+import { accountManager, EVMOptions, hub } from '../../config/evm/contract.evm';
+import { solanaClientProgram, SolanaOptions } from '../../config/solana/program.solana';
 
 export async function hubPermit(
   hubChain: EVM,

@@ -1,4 +1,4 @@
-[
+export default [
   {
     "anonymous": false,
     "inputs": [
@@ -365,4 +365,4 @@
     "stateMutability": "payable",
     "type": "receive"
   }
-]
+];

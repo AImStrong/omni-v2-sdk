@@ -1,4 +1,4 @@
-import assets from '../../config/evm/assets/assets.json';
+import assets from '../../config/assets/assets.asset';
 import { Chain } from '../../config/chain';
 
 export function getAddressesList(

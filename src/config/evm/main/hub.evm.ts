@@ -1,4 +1,4 @@
-{
+export default {
   "sepolia": {
     "AddressesProvider": "0x3b6a73af27a6c1fb5ba0b7bcade3c74db077a3ac",
     "Hub": "0x8B7f0a87A9c11b7E43a3217B81ba2468bEd9b847",
@@ -14,4 +14,4 @@
     "VariableDebtTokenInstance": "0xb188668b6c33a369979cdcb43ac3735b87b6b05c",
     "PriceOracle": "0x75702f725d68f0b7854448a94a4aca06385a5005"
   }
-}
+};

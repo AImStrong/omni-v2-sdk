@@ -1,4 +1,4 @@
-import { pool, EVMOptions } from '../../config/evm/contract';
+import { pool, EVMOptions } from '../../config/evm/contract.evm';
 import { EVM } from '../../config/chain';
 import { divBigint } from '../../utils/index';
 

@@ -1,4 +1,4 @@
-[
+export default [
   {
     "inputs": [
       {
@@ -54,4 +54,4 @@
     "stateMutability": "payable",
     "type": "function"
   }
-]
+];
