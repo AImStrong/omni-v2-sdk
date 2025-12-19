@@ -14,10 +14,3 @@ export async function isERC20Permit(
     return false;
   }
 }
-
-interface PermitInterface {
-  deadline: bigint;
-  permitV: number;
-  permitR: `0x{string}`;
-  permitS: `0x{string}`
-}

@@ -5,3 +5,4 @@ export * from './simulate_hf';
 export * from './quote';
 export * from './hub_to_client_balance.ts';
 export * from './permit.ts';
+export * from './pending_account.ts';
