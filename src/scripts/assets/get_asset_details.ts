@@ -1,7 +1,11 @@
 import { Chain, EVM, chain } from '../../config/chain';
 import { priceOracle, token, pool, EVMOptions, assetManager, rateModel } from '../../config/evm/contract.evm';
-import { divBigint, convertToBytes32 } from '../../utils/index';
+import { divBigint, convertToBytes32, bytes32ToAddress } from '../../utils/index';
 import { decodeConfiguration } from '../lending/decode_configuration';
+import { multicall } from '../../multicall/multicall.contract';
+import { decodeMulticallData } from '../../multicall/muticall.helper';
+import { encodeFunctionData } from 'viem';
+import erc20Abi from '../../config/evm/abis/ERC20PermitMock.abi';
 
 interface AssetInterface {
   id: number;
@@ -36,26 +40,54 @@ export async function getAssetDetails(
   const poolContract = pool(hubChain, options);
   const assetManagerContract = assetManager(hubChain, options);
   const rateModelContract = rateModel(hubChain, options);
+  const multicallContract = multicall(hubChain, options);
 
   const omniAssetAddress: `0x{string}` = await assetManagerContract.read.getAsset([chain[originChain].id, convertToBytes32(asset)]) as `0x{string}`;
 
-  const [reserve, rawPrice, rateData] = await Promise.all([
-    poolContract.read.getReserveData([omniAssetAddress]) as Promise<any>,
-    priceOracleContract.read.getAssetPrice([omniAssetAddress]) as Promise<bigint>,
-    rateModelContract.read.getInterestRateData([omniAssetAddress]) as Promise<any>
-  ]);
+  const data: any = await multicallContract.read.read([[
+    {
+      to: poolContract.address,
+      value: 0,
+      data: encodeFunctionData({ abi: poolContract.abi, functionName: "getReserveData", args: [omniAssetAddress] })
+    },
+    {
+      to: priceOracleContract.address,
+      value: 0,
+      data: encodeFunctionData({ abi: priceOracleContract.abi, functionName: "getAssetPrice", args: [omniAssetAddress] })
+    },
+    {
+      to: rateModelContract.address,
+      value: 0,
+      data: encodeFunctionData({ abi: rateModelContract.abi, functionName: "getInterestRateData", args: [omniAssetAddress] })
+    }
+  ]]);
 
-  const id: number = reserve.id;
-  const configuration = decodeConfiguration(reserve.configuration.data);
-  const aToken: `0x{string}` = reserve.aTokenAddress;
-  const debtToken: `0x{string}` = reserve.variableDebtTokenAddress;
-  const price: number = parseFloat(divBigint(rawPrice, 10n ** 8n, 8));
+  const decodedReserve = decodeMulticallData(data[0]);
+  const decodedRateData = decodeMulticallData(data[2]);
 
-  const [totalSupplyRaw, totalBorrowRaw, availableLiquidityRaw] = await Promise.all([
-    token(hubChain, aToken, options).read.totalSupply() as Promise<bigint>,
-    token(hubChain, debtToken, options).read.totalSupply() as Promise<bigint>,
-    token(hubChain, omniAssetAddress, options).read.balanceOf([aToken]) as Promise<bigint>
-  ]);
+  const id: number = Number(decodedReserve[7]);
+  const configuration = decodeConfiguration(BigInt(decodedReserve[0]));
+  const aToken: `0x{string}` = bytes32ToAddress(decodedReserve[8]);
+  const debtToken: `0x{string}` = bytes32ToAddress(decodedReserve[10]);
+  const price: number = parseFloat(divBigint(BigInt(data[1]), 10n ** 8n, 8));
+
+  const balanceData: any = await multicallContract.read.read([[
+    {
+      to: aToken,
+      value: 0,
+      data: encodeFunctionData({ abi: erc20Abi, functionName: 'totalSupply', args: [] })
+    },
+    {
+      to: debtToken,
+      value: 0,
+      data: encodeFunctionData({ abi: erc20Abi, functionName: 'totalSupply', args: [] })
+    },
+    {
+      to: omniAssetAddress,
+      value: 0,
+      data: encodeFunctionData({ abi: erc20Abi, functionName: 'balanceOf', args: [aToken] })
+    }
+  ]])
 
   return {
     id: id,
@@ -68,14 +100,14 @@ export async function getAssetDetails(
     liquidationThreshold: parseFloat(divBigint(BigInt(configuration.liquidationThreshold), 10n ** 4n, 4)),
     liquidationBonus: parseFloat(divBigint(BigInt(configuration.liquidationBonus), 10n ** 4n, 4)),
     reserveFactor: parseFloat(divBigint(BigInt(configuration.reserveFactor), 10n ** 4n, 4)),
-    optimalUsageRatio: parseFloat(divBigint(BigInt(rateData.optimalUsageRatio), 10n ** 27n, 4)),
-    baseBorrowRate: parseFloat(divBigint(BigInt(rateData.baseVariableBorrowRate), 10n ** 27n, 4)),
-    slope1: parseFloat(divBigint(BigInt(rateData.variableRateSlope1), 10n ** 27n, 4)),
-    slope2: parseFloat(divBigint(BigInt(rateData.variableRateSlope2), 10n ** 27n, 4)),
-    totalSupplyRaw: totalSupplyRaw,
-    totalBorrowRaw: totalBorrowRaw,
-    availableLiquidityRaw: availableLiquidityRaw,
-    supplyRateRaw: reserve.currentLiquidityRate,
-    borrowRateRaw: reserve.currentVariableBorrowRate
+    optimalUsageRatio: parseFloat(divBigint(BigInt(decodedRateData[0]), 10n ** 27n, 4)),
+    baseBorrowRate: parseFloat(divBigint(BigInt(decodedRateData[1]), 10n ** 27n, 4)),
+    slope1: parseFloat(divBigint(BigInt(decodedRateData[2]), 10n ** 27n, 4)),
+    slope2: parseFloat(divBigint(BigInt(decodedRateData[3]), 10n ** 27n, 4)),
+    totalSupplyRaw: BigInt(balanceData[0]),
+    totalBorrowRaw: BigInt(balanceData[1]),
+    availableLiquidityRaw: BigInt(balanceData[2]),
+    supplyRateRaw: BigInt(decodedReserve[2]),
+    borrowRateRaw: BigInt(decodedReserve[4])
   }
 }

@@ -56,3 +56,8 @@ export function base58ToVec(bs: string): number[] {
 export function vecToBase58(vec: number[]): string {
   return bs58.encode(vec);
 }
+
+export function bytes32ToAddress(hex: `0x{string}`): `0x{string}` {
+  if (!/^0x[0-9a-fA-F]{64}$/.test(hex) || hex.length !== 66) throw new Error("not bytes32");
+  return `0x${hex.slice(26)}` as `0x{string}`;
+}

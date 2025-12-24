@@ -1,6 +1,6 @@
 {
   "name": "@aimstrong/omni-v2-sdk",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "Helper for omni-v2-core and omni-v2-solana-client",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

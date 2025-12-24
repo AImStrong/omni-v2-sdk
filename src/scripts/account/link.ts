@@ -4,6 +4,8 @@ import { EVM } from '../../config/chain';
 import { pdas } from '../../config/solana/config.solana';
 import { accountManager, EVMOptions, hub } from '../../config/evm/contract.evm';
 import { solanaClientProgram, SolanaOptions } from '../../config/solana/program.solana';
+import { multicall } from '../../multicall/multicall.contract';
+import { encodeFunctionData } from 'viem';
 
 export async function hubPermit(
   hubChain: EVM,
@@ -83,11 +85,21 @@ export async function isLinked(
 ): Promise<boolean> {
   const accountManagerContract = accountManager(hubChain, options);
 
-  const [salt1, salt2] = await Promise.all([
-    accountManagerContract.read.userToSalt([convertToBytes32(acc1)]),
-    accountManagerContract.read.userToSalt([convertToBytes32(acc2)])
-  ])
+  const data: any = await multicall(hubChain, options).read.read([[
+    {
+      to: accountManagerContract.address,
+      value: 0,
+      data: encodeFunctionData({abi: accountManagerContract.abi, functionName: "userToSalt", args: [convertToBytes32(acc1)]})
+    },
+    {
+      to: accountManagerContract.address,
+      value: 0,
+      data: encodeFunctionData({abi: accountManagerContract.abi, functionName: "userToSalt", args: [convertToBytes32(acc2)]})
+    }
+  ]]);
 
-  if (salt1 == 0n) return false;
-  return salt1 == salt2;
+  console.log(data);
+
+  if (BigInt(data[0]) == 0n) return false;
+  return BigInt(data[0]) == BigInt(data[1]);
 }

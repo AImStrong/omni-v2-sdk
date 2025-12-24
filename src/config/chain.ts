@@ -47,3 +47,13 @@ export const chain: Record<Chain, ChainConfig> = {
     connection: new Connection(clusterApiUrl("devnet"), "confirmed"),
   }
 }
+
+export const idToChain: Record<number, Chain> = {
+  11155111: "sepolia",
+  97: "bscTestnet",
+  42161: "arbitrum",
+  8453: "base",
+  56: "bsc",
+  101: "solana",
+  103: "solanaDevnet",
+}
