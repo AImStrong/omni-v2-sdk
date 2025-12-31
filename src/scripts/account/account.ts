@@ -164,4 +164,14 @@ export class Account {
     if (BigInt(data[0]) == 0n) return false;
     return BigInt(data[0]) == BigInt(data[1]);
   }
+
+  public async linkAccount(chain: EVM, salt: bigint, account: string, wallet: any): Promise<`0x${string}`> {
+    const hub = this.contract.hub(chain);
+    return await this.contract.writeContract(chain, hub.address, hub.abi, "linkAccount", [salt, convertToBytes32(account)], 0n, wallet);
+  }
+
+  public async unlinkAccount(chain: EVM, salt: bigint, account: string, wallet: any): Promise<`0x${string}`> {
+    const hub = this.contract.hub(chain);
+    return await this.contract.writeContract(chain, hub.address, hub.abi, "unlinkAccount", [salt, convertToBytes32(account)], 0n, wallet);
+  }
 }
