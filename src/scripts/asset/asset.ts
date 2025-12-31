@@ -219,7 +219,6 @@ export class Asset {
         const availableLiquidityRaw: bigint = BigInt(data[dataId + 3]);
         const decodedReserve = this.contract.decodeMulticallData(data[dataId + 4]);
         const decodedRateData = this.contract.decodeMulticallData(data[dataId + 5]);
-        dataId += 6;
 
         const id: number = Number(decodedReserve[7]);
         const configuration = decodeConfiguration(BigInt(decodedReserve[0]));
@@ -248,6 +247,8 @@ export class Asset {
           supplyRateRaw: BigInt(decodedReserve[2]),
           borrowRateRaw: BigInt(decodedReserve[4])
         }
+
+        dataId += 6;
 
         chainAssets[key] = asset;
       }
