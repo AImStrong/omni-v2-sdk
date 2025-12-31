@@ -161,8 +161,6 @@ export class Account {
       }
     ]]);
 
-    console.log(data);
-
     if (BigInt(data[0]) == 0n) return false;
     return BigInt(data[0]) == BigInt(data[1]);
   }
