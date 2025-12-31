@@ -75,43 +75,43 @@ export default {
   "bscTestnet": {
     "WBTC": {
       "address": "0x11b5498e6a85ab62925a7e66fea707d096ee23f1",
-      "omniAsset": "0x255780B10ACf78c67EF2876732BfD33CeF769556",
-      "aToken": "0x198bbfe55377E581F04eE771fB79f9b24572DC75",
-      "variableDebtToken": "0x0421664dfb8306000Ceb530FaC39eDdEc05F4B28"
+      "omniAsset": "0x8cdaC3409451A7187d5569F17B00775dcea9980A",
+      "aToken": "0xC6dE6b6D7Ff8390fE76Cd015B236710b911bB789",
+      "variableDebtToken": "0xf0561d5cCca15DA508Eda01fA672b3748ec1aC08"
     },
     "SOL": {
       "address": "0xb28ee1f4ae2c8082a6c06c446c79ad8173d988e4",
-      "omniAsset": "0xAB868a894773d92420df0d2d52F4ad39012dDe29",
-      "aToken": "0x37D694DB87Dc4F982310De17DFe9dbf24b0607b3",
-      "variableDebtToken": "0xf30BbBB68EB36Fa77655A076598Fb96A680BDd05"
+      "omniAsset": "0x6A97332DF914B362dC1e3c556E68772FF9441C48",
+      "aToken": "0x77fA6B73F2b8EF37B51a99731dA4d52936382f81",
+      "variableDebtToken": "0x5bAdA62eEFf7D90a80dA4d07A6195a7a40C42d4d"
     },
     "DAI": {
       "address": "0x136fdfa51e67c0881dd189e5edc814bd796f49d2",
-      "omniAsset": "0x17735EEea7F3518EFCeB303c1DCCACfA54e327F5",
-      "aToken": "0xA9ED5c977Cb2c496BbA0F35c9A2AB32175F51A50",
-      "variableDebtToken": "0x37A53C75c9f5d99944ED71fF8A89779eeDc3f25f"
+      "omniAsset": "0x0e3207Cc0F08C64E1C45Be7851351c8c5b7E450d",
+      "aToken": "0xcf12c5825f43AE1406ACc8594C39F558a42Db03A",
+      "variableDebtToken": "0x293c08a80757eE757b99bEc8e439A4e22B57E5F6"
     }
   },
   "sepolia": {
     "USDC": {
       "address": "0xb293ebf681941cc4c83fd72b5eae39cc724bfdc7",
-      "omniAsset": "0x91021349eC1d5Aa079fB0C5093c78321d11994c8",
-      "aToken": "0x81D3E38eF196134EEC63334f21b339b4879596de",
-      "variableDebtToken": "0x316812CaBBb49B40Cc4e616d4972aC101379dF20"
+      "omniAsset": "0x8d1e6ed147e46850E664Dc4B7897285e5036DBc0",
+      "aToken": "0xDD4Cf295FfA0c8a8466d7E626B04f68F58165545",
+      "variableDebtToken": "0x6EF9e64eD36aBa2AB4eC472FC3d6174F9161c121"
     },
     "WETH": {
       "address": "0xf6bc69be9162fce10412175d96fea4c673bc3c74",
-      "omniAsset": "0x099046425B42dd08B3C68c936A77e6F76e714f93",
-      "aToken": "0x890cb51Bb53ed47d84d8589C99ec0E7617c092a7",
-      "variableDebtToken": "0x456911b68d7de3A201CD2EE16Ed4C47EADf8CB95"
+      "omniAsset": "0x3AE3D9f59DCB6295303a68bB4759d5B0767F562d",
+      "aToken": "0x0a5cB00274A50BeF38E1577b947e309b975DfB64",
+      "variableDebtToken": "0x442E3AEDc53c42D0a7642154490277cA51A60c65"
     }
   },
   "solanaDevnet": {
     "USDT": {
       "address": "3QVttuQ9p1ZLVTYw2UVkWdnHKbo7y8CKdnqd3SXwUjtS",
-      "omniAsset": "0x9B6B5537Cb899dcA1f9137562DA9e84b0dAc2023",
-      "aToken": "0xd2cb57320fC99900fFb7cCb46740B1c65810BFd4",
-      "variableDebtToken": "0x6eD0b4352F7Ee8D951748ec4B95E2F2C4A1462A1"
+      "omniAsset": "0xDA8874796890B39C862964234Cc58c406D9C6131",
+      "aToken": "0xF296324Ff1975a93C2FC357702cF1Ac7f3349eB1",
+      "variableDebtToken": "0x6aB4f5F2f7382887B0d9CDB718Dad41819753687"
     }
   }
 };
