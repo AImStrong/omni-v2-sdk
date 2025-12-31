@@ -2,31 +2,31 @@ import { PublicKey } from "@solana/web3.js"
 import { Chain } from './chain.ts';
 
 export interface Endpoint {
-  endpoint: `0x{string}` | PublicKey;
+  endpoint: `0x${string}` | PublicKey;
   eid: number;
   sendLib?: PublicKey;
   executor?: PublicKey;
 }
 
-export const endpoints: Record<Chain, Endpoint> = {
+export const endpointConfig: Record<Chain, Endpoint> = {
   sepolia: {
-    endpoint: "0x6EDCE65403992e310A62460808c4b910D972f10f" as `0x{string}`,
+    endpoint: "0x6EDCE65403992e310A62460808c4b910D972f10f",
     eid: 40161
   },
   bscTestnet: {
-    endpoint: "0x6EDCE65403992e310A62460808c4b910D972f10f" as `0x{string}`,
+    endpoint: "0x6EDCE65403992e310A62460808c4b910D972f10f",
     eid: 40102
   },
   arbitrum: {
-    endpoint: "0x1a44076050125825900e736c501f859c50fE728c" as `0x{string}`,
+    endpoint: "0x1a44076050125825900e736c501f859c50fE728c",
     eid: 30110
   },
   base: {
-    endpoint: "0x1a44076050125825900e736c501f859c50fE728c" as `0x{string}`,
+    endpoint: "0x1a44076050125825900e736c501f859c50fE728c",
     eid: 30184
   },
   bsc: {
-    endpoint: "0x1a44076050125825900e736c501f859c50fE728c" as `0x{string}`,
+    endpoint: "0x1a44076050125825900e736c501f859c50fE728c",
     eid: 30102
   },
   solana: {

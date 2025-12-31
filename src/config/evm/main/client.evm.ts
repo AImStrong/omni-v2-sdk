@@ -1,14 +1,17 @@
 export default {
   "sepolia": {
-    "AddressesProvider": "0x2cf6627e8951476d5767bf18f701132e3725c78a",
-    "Client": "0xe7DA3E630722161345debC9F3a6914fF30d64Cf1",
-    "ClientVault": "0x51D035584c712D47112D9EddC92CB0D42F4b9C81",
-    "Message": "0xbF66e0282A6F5723eBc44Ed6cEf897eFA48E6534"
+    "AddressesProvider": "0x0727a3926d559d5d17bb7b1d6d9a180da0fc3272",
+    "Client": "0xfca146423aD14651B138B8970F1BF37a37BF759F",
+    "ClientVault": "0xDd265449641F5ddecaCaa40F7aa50477d54c99f0",
+    "Message": "0x5eECF4B2F071E0e21B946b2d3bE8d1740f0b9Eb9"
   },
   "bscTestnet": {
-    "AddressesProvider": "0x9ce12b2a3058ed11108f5bd0cccd905dd3f42e4e",
-    "Client": "0x428d63FC2aA1C6FB8e95B45De768BD8d103cA7a7",
-    "ClientVault": "0x7b2EBf61Ae25AC012d89925D81448228A8740b73",
-    "Message": "0xc4454700f53cBc8E22E16769Cdb3553562C7652c"
-  }
+    "AddressesProvider": "0x5f351100fe2687bb7bce0577cdced734bc2a3194",
+    "Client": "0xD92D1Fb708C70E881142eF81F0e66718f92b242B",
+    "ClientVault": "0x98899040a1302A35F864b278576CCfD53CD96Bc7",
+    "Message": "0x3940838f9A6Dd0118431dEf8741ae164C79bd36B"
+  },
+  "base": {},
+  "arbitrum": {},
+  "bsc": {}
 };

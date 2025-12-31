@@ -12,7 +12,7 @@ export interface ChainConfig {
   connection?: Connection;
 }
 
-export const chain: Record<Chain, ChainConfig> = {
+export const chainConfig: Record<Chain, ChainConfig> = {
   sepolia: {
     viem: viemChains.sepolia,
     id: 11155111,
@@ -49,11 +49,11 @@ export const chain: Record<Chain, ChainConfig> = {
 }
 
 export const idToChain: Record<number, Chain> = {
-  11155111: "sepolia",
-  97: "bscTestnet",
-  42161: "arbitrum",
-  8453: "base",
-  56: "bsc",
-  101: "solana",
-  103: "solanaDevnet",
+  11155111          : "sepolia",
+  97                : "bscTestnet",
+  42161             : "arbitrum",
+  8453              : "base",
+  56                : "bsc",
+  101               : "solana",
+  103               : "solanaDevnet",
 }

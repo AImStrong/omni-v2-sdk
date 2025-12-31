@@ -18,3 +18,17 @@ export function divBigint(numerator: bigint, denominator: bigint, decimals: numb
 
   return fractionTrimmed ? `${whole}.${fractionTrimmed}` : whole;
 }
+
+export function minBigint(...values: bigint[]): bigint {
+  if (values.length == 0) return 0n;
+  let val = values[0];
+  for (let i = 1; i < values.length; i++) if (val > values[i]) val = values[i];
+  return val;
+}
+
+export function maxBigint(...values: bigint[]): bigint {
+  if (values.length == 0) return 0n;
+  let val = values[0];
+  for (let i = 1; i < values.length; i++) if (val < values[i]) val = values[i];
+  return val;
+}

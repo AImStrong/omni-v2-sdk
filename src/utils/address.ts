@@ -13,13 +13,13 @@ export function detechAddressType(addr: string): "evm" | "solana" | "move" {
   throw new Error("cannot detech address");
 }
 
-export function convertToBytes32(addr: string): `0x{string}` {
+export function convertToBytes32(addr: string): `0x${string}` {
   let bytes32: string;
   switch (detechAddressType(addr)) {
-    case "evm": bytes32 = addressToBytes32(addr); break;
+    case "evm": bytes32 = addressToBytes32(addr as `0x${string}`); break;
     case "solana": bytes32 = vecToBytes(base58ToVec(addr)); break;
     case "move": bytes32 = addr; break;
     default: throw new Error("cannot detech asset address");
   }
-  return bytes32 as `0x{string}`;
+  return bytes32 as `0x${string}`;
 }
